@@ -1,6 +1,7 @@
 #Show age,symptoms ,date of vaccination,vaccine adverse event date
 and experiencing tightening pain of people who need a doctor,
 Emergency room, hospitalization in order of recovery date
+
 db.covid.aggregate([
 	{$match:
 		{ER_ED_VISIT:"Y",

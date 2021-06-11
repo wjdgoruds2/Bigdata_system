@@ -1,5 +1,6 @@
 #The location of vaccination for people
 who have had side effects within five days of the vaccination date.
+
 PUB=Public
 PVT=Private
 MIL=Military
