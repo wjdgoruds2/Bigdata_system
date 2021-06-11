@@ -1,0 +1,22 @@
+#The location of vaccination for people
+who have had side effects within five days of the vaccination date.
+
+PUB=Public
+PVT=Private
+MIL=Military
+PHM=Pharmacy or store
+SCH=School or student health clinic
+SEN=Nursing home or senior living facility
+WRK=Workplace clinic
+OTH=Other
+UNK=Unknown
+db.covid.aggregate([
+	{$match:
+		{NUMDAYS:
+			{$lt:"5"},
+		}
+	},
+	{$group:
+		{_id:"$V_ADMINBY",count:{$sum:1}}
+	},
+])

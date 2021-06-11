@@ -1,0 +1,15 @@
+#Cases in which vaccinators who have taken aspirin regularly showed fever after injecting vaccine.
+db.covid.aggregate([
+	{$match:
+		{OTHER_MEDS:
+			{$regex:"aspirin"},
+		SYMPTOM_TEXT:
+			{$regex:"fever"}
+		}
+	},
+	{$project:
+		{_id:0,AGE_YRS:1,
+		SYMPTOM_TEXT:1,
+		OTHER_MEDS:1}
+	}
+])

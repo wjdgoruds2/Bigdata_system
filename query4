@@ -1,0 +1,16 @@
+#Cases in which a woman who is allergic to dairy products vomited after vaccination.
+db.covid.aggregate([
+	{$match:
+		{SEX:"F",
+		SYMPTOM_TEXT:
+			{$regex:"vomit"},
+		ALLERGIES:
+			{$regex:"dairy"}}},
+	{$project:
+		{_id:0,
+		AGE_YRS:1,
+		SYMPTOM_TEXT:1,
+		ALLERGIES:1}
+	},
+	{$sort: {AGE_YRS:1}}
+])

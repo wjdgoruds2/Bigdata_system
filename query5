@@ -1,0 +1,19 @@
+#Show age,symptoms ,date of vaccination,vaccine adverse event date
+and experiencing tightening pain of people who need a doctor,
+Emergency room, hospitalization in order of recovery date
+
+db.covid.aggregate([
+	{$match:
+		{ER_ED_VISIT:"Y",
+		OFC_VISIT:"Y",
+		SYMPTOM_TEXT:
+			{$regex:"tightness"}}},
+	{$project:
+		{_id:0,
+		AGE_YRS:1,
+		SYMPTOM_TEXT:1,
+		VAX_DATE:1,
+		ONSET_DATE:1}
+	},
+	{$sort: {RECVDATE:1}}
+])
