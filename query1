@@ -1,0 +1,12 @@
+#The number of people over 80 who have not recovered from the vaccine.
+db.covid.aggregate([
+	{$match:
+		{AGE_YRS:
+			{$gt:"80.0"},
+		RECOVD:
+			{$regex:"N"}
+		}
+	},
+	{$count:"The number of people over 90 who have recovered"
+	}
+])
